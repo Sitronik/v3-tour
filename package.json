@@ -1,6 +1,6 @@
 {
   "name": "v3-tour",
-  "version": "3.1.2",
+  "version": "3.1.3",
   "description": "v3-tour is a lightweight, simple and customizable tour plugin for use with Vue.js. It provides a quick and easy way to guide your users through your application.",
   "author": "Sitronik <sitronik92@mail.ru>",
   "license": "MIT",
