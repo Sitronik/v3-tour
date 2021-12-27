@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { createPopper } from '@popperjs/core'
+import { createPopper } from 'popperjs-core-ionic-scroll-fix'
 import jump from 'jump.js'
 import sum from 'hash-sum'
 import { DEFAULT_STEP_OPTIONS, HIGHLIGHT } from '../shared/constants'
