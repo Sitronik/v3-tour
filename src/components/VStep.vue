@@ -103,7 +103,7 @@ export default {
      * A step is considered sticky if it has no target.
      */
     isSticky () {
-      return !this.step.target
+      return !this.targetElement
     }
   },
   methods: {
@@ -112,27 +112,28 @@ export default {
         console.log('[Vue Tour] The target element ' + this.step.target + ' of .v-step[id="' + this.hash + '"] is:', this.targetElement)
       }
 
-      if (this.isSticky) {
-        document.body.appendChild(this.$refs['v-step-' + this.hash])
-      } else {
-        if (this.targetElement) {
-          this.enableScrolling()
-          this.createHighlight()
+      if (this.targetElement) {
+        this.enableScrolling()
+        this.createHighlight()
 
-          createPopper(
-            this.targetElement,
-            this.$refs['v-step-' + this.hash],
-            this.params
-          )
-        } else {
+        createPopper(
+          this.targetElement,
+          this.$refs['v-step-' + this.hash],
+          this.params
+        )
+      } else {
+        if (this.target) {
           if (this.debug) {
             console.error('[Vue Tour] The target element ' + this.step.target + ' of .v-step[id="' + this.hash + '"] does not exist!')
           }
           this.$emit('targetNotFound', this.step)
           if (this.stopOnFail) {
             this.stop()
+            return
           }
         }
+        // Append it as sticky
+        document.body.appendChild(this.$refs['v-step-' + this.hash])
       }
     },
     enableScrolling () {
